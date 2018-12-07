@@ -1,0 +1,63 @@
+<!--<app-form [widgets]="widgets" (onCancel)="_handleCancel($event)" (onConfirm)="_submitForm($event)"></app-form>-->
+<!-- <div class="form-wrap" *ngIf="formData.id == ''"> -->
+<div class="form-wrap">
+  <form nz-form [formGroup]="validateForm" [nzType]="'horizontal'">
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSm]="6">
+        <label for="appname" nz-form-item-required>应用名称</label>
+      </div>
+      <div nz-form-control nz-col [nzSm]="14" [nzValidateStatus]="getFormControl('appname')" nzHasFeedback>
+        <nz-input [nzSize]="'large'" formControlName="appname" [nzId]="'appname'"
+                  [ngModel]="formData.appname"></nz-input>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSm]="6">
+        <label for="version" nz-form-item-required>请选择版本</label>
+      </div>
+
+      <div nz-form-control nz-col [nzSm]="14" [nzValidateStatus]="getFormControl('version')" nzHasFeedback>
+
+
+     <nz-select  [ngModel]="formData.version" formControlName="version" nzAllowClear nzPlaceHolder="choose">
+       <nz-option *ngFor="let option of formData.version" [nzValue]="option" [nzLabel]="option.name"></nz-option>
+     </nz-select>
+      <!-- <nz-select  [ngModel]="formData.version" ng-options="p.name for p in formData.version"></nz-select> -->
+        <!-- <nz-input [nzSize]="'large'" formControlName="version" [nzId]="'version'"
+                  [ngModel]="formData.version"></nz-input> -->
+        <div nz-form-explain
+             *ngIf="getFormControl('version').dirty&&getFormControl('version').hasError('required')">
+          version is required!
+        </div>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSm]="6">
+        <label for="workerid" nz-form-item-required>请选择服务器</label>
+      </div>
+      <div nz-form-control nz-col [nzSm]="14"
+           [nzValidateStatus]="getFormControl('workerid')" nzHasFeedback>
+
+     <nz-select  [ngModel]="formData.workerid" formControlName="workerid" nzAllowClear [nzPlaceHolder]="choose">
+       <nz-option *ngFor="let option of formData.workerid" [nzValue]="option.id" [nzLabel]="option.id"></nz-option>
+     </nz-select>
+        <!-- <nz-input [nzSize]="'large'" formControlName="workerid" [nzId]="'workerid'"
+                  [ngModel]="formData.workerid"></nz-input> -->
+        <div nz-form-explain
+             *ngIf="getFormControl('workerid').dirty&&getFormControl('workerid').hasError('required')">Please
+           workerid is required!
+        </div>
+      </div>
+    </div>
+    <div nz-form-item nz-row style="margin-bottom:8px;">
+      <div class="customize-footer">
+        <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="_cancel()">
+         取 消 
+        </button>
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="_submitForm()">
+          确 定
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

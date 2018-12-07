@@ -1,0 +1,6 @@
+<app-table [gridView]="gridView" [tableData]="tableData"
+           [total]="total"
+           [(pageIndex)]="current"
+           [pageSize]="pageSize"
+           [loading]="loading"
+           (refreshData)="getData($event)"></app-table>

@@ -1,0 +1,76 @@
+<!--<app-form [widgets]="widgets" (onCancel)="_handleCancel($event)" (onConfirm)="_submitForm($event)"></app-form>-->
+<!-- <div class="form-wrap" *ngIf="formData.id == ''"> -->
+<div class="form-wrap">
+  <form nz-form [formGroup]="validateForm" [nzType]="'horizontal'">
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSm]="6">
+        <label for="appname" nz-form-item-required>应用名称</label>
+      </div>
+      <div nz-form-control nz-col [nzSm]="14" [nzValidateStatus]="getFormControl('appname')" nzHasFeedback>
+        <nz-input [nzSize]="'large'" formControlName="appname" [nzId]="'appname'"
+                  [ngModel]="formData.appname"></nz-input>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSm]="6">
+        <label for="version" nz-form-item-required>版本</label>
+      </div>
+      <div nz-form-control nz-col [nzSm]="14" [nzValidateStatus]="getFormControl('version')" nzHasFeedback>
+        <nz-input [nzSize]="'large'" formControlName="version" [nzId]="'version'"
+                  [ngModel]="formData.version"></nz-input>
+        <!-- <div nz-form-explain -->
+        <!--      *ngIf="getFormControl('Version').dirty&&getFormControl('Version').hasError('required')"> -->
+        <!--   name is required! -->
+        <!-- </div> -->
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSm]="6">
+        <label for="workerid" nz-form-item-required>所在服务器</label>
+      </div>
+      <div nz-form-control nz-col [nzSm]="14"
+           [nzValidateStatus]="getFormControl('workerid')" nzHasFeedback>
+        <nz-input [nzSize]="'large'" formControlName="workerid" [nzId]="'workerid'"
+                  [ngModel]="formData.workerid"></nz-input>
+        <!-- <div nz-form-explain -->
+        <!--      *ngIf="getFormControl('Workerid').dirty&&getFormControl('Workerid').hasError('required')">Please -->
+        <!--   nickName is required! -->
+        <!-- </div> -->
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSm]="6">
+        <label for="stat" nz-form-item-required>当前状态</label>
+      </div>
+      <div nz-form-control nz-col [nzSm]="14" [nzValidateStatus]="getFormControl('stat')" nzHasFeedback>
+        <nz-input [nzSize]="'large'" formControlName="stat" [nzId]="'stat'"
+                  [ngModel]="formData.stat"></nz-input>
+        <!-- <div nz-form-explain  *ngIf="getFormControl('Stat').dirty&&getFormControl('Stat').hasError('email')"> -->
+        <!--   The input is not valid phone! -->
+        <!-- </div> -->
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSm]="6">
+        <label for="created_time" nz-form-item-required>部署日期</label>
+      </div>
+      <div nz-form-control nz-col [nzSm]="14" [nzValidateStatus]="getFormControl('created_time')" nzHasFeedback>
+        <nz-input [nzSize]="'large'" formControlName="created_time" [nzId]="'created_time'"
+                  [ngModel]="formData.created_time"></nz-input>
+        <!-- <div nz-form-explain  *ngIf="getFormControl('Time').dirty&&getFormControl('Time').hasError('email')"> -->
+        <!--   The input is not valid E-mail! -->
+        <!-- </div> -->
+      </div>
+    </div>
+     <div nz-form-item nz-row style="margin-bottom:8px;">
+       <div class="customize-footer">
+         <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="_cancel()">
+          取 消 
+         </button>
+         <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="_submitForm()">
+           确 定
+         </button>
+       </div>
+     </div>
+  </form>
+</div>
